@@ -1,10 +1,10 @@
 ; 1. Составить диаграмму вычисление для следующих выражений
-(equal 3(abs - 3))
-(equal (+ 1 2) 3))
-(equal (* 4 7) 21))
-(equal (* 2 3) (+ 7 2)))
-(equal (- 7 3) (* 3 2)))
-(equal (abs(-2 4)) 3))
+(equal 3(abs - 3)) ; error
+(equal (+ 1 2) 3)) ; T
+(equal (* 4 7) 21)) ; NIL
+(equal (* 2 3) (+ 7 2))) ; NIL
+(equal (- 7 3) (* 3 2))) ; NIL
+(equal (abs(-2 4)) 3)) ; error
 
 ; 2. Функция которая вычисляет гипотенузу по заданным катетам
 
@@ -13,14 +13,14 @@
 
 
 ; 4. Написать результаты вычисления следующих выражений
-(list 'a c)
-(cons'a'b'c)
-(cons'a (b c))
-(list 'a (b c))
-(cons'a '(b c))
-(list a '(b c))
-(caddy (1 2 3 4 5))
-(list (+ 1 '(length '(1 2 3))))
+(list 'a c) ; variable C has no value
+(cons'a'b'c) ; too many arguments given to CONS
+(cons'a (b c)) ; undefined function B
+(list 'a (b c)) ; undefined function B 
+(cons'a '(b c)) ; (A B C)
+(list a '(b c)) ; variable A has no value
+(caddy (1 2 3 4 5)) ; undefined function CADDY
+(list (+ 1 '(length '(1 2 3)))) ; +: (LENGTH '(1 2 3)) is not a number
 
 ; 5. Написать функцию longer_then от двух списков-аргументов, 
 ; которая возвращает Т, если первый аргумент имеет большую длину.
