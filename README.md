@@ -8,4 +8,4 @@
 
 :three: Написание функций в Lisp. Решение простых задач часть 1 [[Код](https://github.com/timoninas/functional-programming/blob/master/lab_03/lab_03.lsp)][[Отчет](https://github.com/timoninas/functional-programming/blob/master/lab_02.pdf)]
 
-:four: Написание функций в Lisp. Решение простых задач часть 2 [[Код]()][[Отчет]()]
+:four: Написание функций в Lisp. Решение простых задач часть 2 [[Код](https://github.com/timoninas/functional-programming/blob/master/lab_04/lab_04.lsp)][[Отчет]()]
