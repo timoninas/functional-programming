@@ -35,10 +35,22 @@
 
 ; 6. Написать предикат, который принимает два числа-аргумента и возвращает Т, 
 ; если первое число не меньше второго.
+(defun getN6(num1 num2) 
+    (>= num1 num2))
 
 ; 7. Какой из следующих двух вариантов предиката ошибочен и почему? 
 (defun pred1 (x) (and (numberp x) (plusp x))) ; +
 (defun pred2 (x) (and (plusp x) (numberp x))) ; error: first check num
 
 ; 8. Решить задачу 4, используя для ее решения конструкции IF, COND, AND/OR.
+(defun getN8 (a b c)
+    (if (>= a b)
+        (if (<= a c)
+            T
+            NIL)
+        NIL))
+
+(defun getN9 (a b c)
+    ( cond ( (>= a b) (cond ((<= a c) T)))))
+
 
