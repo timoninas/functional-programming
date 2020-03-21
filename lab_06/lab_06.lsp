@@ -10,5 +10,5 @@
     (cond ((or ( = x y) (equal x y))
           (and (oddp x) (oddp y))
           (and (evenp x) (evenp y))
-          (T 'difference)))) kek
+          (T 'difference))))
 
