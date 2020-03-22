@@ -19,6 +19,17 @@
 ;         б) список точечных пар.
 ; По созданным спискам: 1 - по столице найти страну 2 - по стране найти столицу
 
+(setq lst1 '(Rus Ukr Blr Kaz)))
+(setq lst2 '(Moscow Kiev Minsk Astana))
+
+(defun create_list(lst1 lst2) 
+(list (cons (car lst1) (car lst2))
+(cons (cadr lst1) (cadr lst2))
+(cons (caddr lst1) (caddr lst2))
+(cons (cadddr lst1) (cadddr lst2))))
+
+(create_list lst1 lst2)
+
 
 
 ; how-alike из лекции
