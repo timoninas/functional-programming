@@ -139,21 +139,20 @@
 
 (defun selectBetweenInner (lst left right result)
 	(mapcar	#'(lambda (x)
-					(cond	((listp x) (selectBetweenInner x left right result))
-							((and	(numberp x) (> x left) (< x right))
-								(nconc result (cons x nil))
-							)
-					)
-				)
-			lst
+		(cond	((listp x) (selectBetweenInner x left right result))
+			((and	(numberp x) (> x left) (< x right))
+				(nconc result (cons x nil))
+			)
+		)
+		)
+		lst
 	)
 	(cdr result)
 )
+
 (defun selectBetween (lst left right);						
 	(selectBetweenInner lst left right (cons nil nil))
 )
-
-
 
 ; 5. Написать функцию, вычисляющую декартово произведение двух своих списков- аргументов. 
 ; (Напомним, что А х В это множество всевозможных пар (a b), где а принадлежит А, принадлежит В.)
