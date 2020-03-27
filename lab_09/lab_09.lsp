@@ -5,6 +5,31 @@
     (and (subsetp lst1 lst2) (subsetp lst2 lst1))
 )
 
+(defun checkEl (elm lst)
+    (cond 
+        ((equal elm (car lst)) t) 
+        ((equal nil (car lst)) nil))
+        (t (checkEl elm (cdr lst))
+    )
+)
+
+(defun checkLst (lst1 lst2)
+    (if (equal nil (car lst1)) 
+        t
+        (if (not (checkEl (car lst1) lst2)) 
+            nil 
+            (checkLst (cdr lst1) lst2)
+        )
+    )
+)
+
+(defun set-equal (lst1 lst2) 
+(
+    and 
+        (checkLst lst1 lst2) 
+        (checkLst lst2 lst1))
+)
+
 ; 3. Напишите необходимые функции, которые обрабатывают таблицу из точечных пар:
 ; (страна. столица), и возвращают по стране - столицу, а по столице - страну.
 
@@ -30,15 +55,6 @@
         (t (searchEl (cdr pairs) element))
     )
 )
-
-(defun check (el el1)
-    (format t "~A and ~A ~%" el el1)
-)
-
-(defun goThen(pairs element)
-    (mapcar #'outPut pairs element)
-)
-
 
 ; 7. Напишите функцию, которая умножает на заданное число-аргумент все числа
 ; из заданного списка-аргумента, когда 
@@ -139,20 +155,21 @@
 
 (defun selectBetweenInner (lst left right result)
 	(mapcar	#'(lambda (x)
-		(cond	((listp x) (selectBetweenInner x left right result))
-			((and	(numberp x) (> x left) (< x right))
-				(nconc result (cons x nil))
-			)
-		)
-		)
-		lst
+					(cond	((listp x) (selectBetweenInner x left right result))
+							((and	(numberp x) (> x left) (< x right))
+								(nconc result (cons x nil))
+							)
+					)
+				)
+			lst
 	)
 	(cdr result)
 )
-
 (defun selectBetween (lst left right);						
 	(selectBetweenInner lst left right (cons nil nil))
 )
+
+
 
 ; 5. Написать функцию, вычисляющую декартово произведение двух своих списков- аргументов. 
 ; (Напомним, что А х В это множество всевозможных пар (a b), где а принадлежит А, принадлежит В.)
