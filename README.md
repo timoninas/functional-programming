@@ -13,5 +13,5 @@
 | :seven: | Различные сложные функций в Lisp. Работа с переменными ч.1 | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_07/lab_07.lsp) | [Отчет]() | :white_check_mark: |
 | :eight: | Различные сложные функций в Lisp. Работа с переменными ч.2  | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_07/lab_07.lsp) | [Отчет]() | :negative_squared_cross_mark: |
 | :nine: | Хвостовая, дополняемая, множественные рекурсии в Lisp ч.1  | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_09/lab_09.lsp) | [Отчет](https://github.com/timoninas/functional-programming/blob/master/lab_09/lab_09.pdf) | :white_check_mark: |
-| :zero: | Хвостовая, дополняемая, множественные рекурсии в Lisp ч.2  | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_10/lab_10.lsp) | [Отчет](https://github.com/timoninas/functional-programming/blob/master/lab_10/lab_10.pdf) | :negative_squared_cross_mark: |
+| :zero: | Хвостовая, дополняемая, множественные рекурсии в Lisp ч.2  | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_10/lab_10.lsp) | [Отчет](https://github.com/timoninas/functional-programming/blob/master/lab_10/lab_10.pdf) | :white_check_mark: |
 
