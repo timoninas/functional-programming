@@ -16,3 +16,8 @@
 | :nine: | Хвостовая, дополняемая, множественные рекурсии в Lisp ч.1  | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_09/lab_09.lsp) | [Отчет](https://github.com/timoninas/functional-programming/blob/master/lab_09/lab_09.pdf) | :white_check_mark: |
 | :zero: | Хвостовая, дополняемая, множественные рекурсии в Lisp ч.2  | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_10/lab_10.lsp) | [Отчет](https://github.com/timoninas/functional-programming/blob/master/lab_10/lab_10.pdf) | :white_check_mark: |
 
+## Рубежные контроли по Lisp 
+
+| :1234: | Описание | Поддержка | Отправленный файл| :information_source: |
+| --- | --- | --- | --- | --- |
+| :one: | Рубежный контроль №2 | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_01/lab_01.lsp) | [Код]() | :negative_squared_cross_mark: |
