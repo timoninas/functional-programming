@@ -1,5 +1,5 @@
 
-; ‚ставка k-го элемента
+; Р’СЃС‚Р°РІРєР° k-РіРѕ СЌР»РµРјРµРЅС‚Р°
 (defun insert-k (lst value k)
     (cond
         ( (< k 1) (cons value lst))
@@ -7,7 +7,7 @@
     )
 )
 
-; Њногоуровневый список в одноуровневый
+; РњРЅРѕРіРѕСѓСЂРѕРІРЅРµРІС‹Р№ СЃРїРёСЃРѕРє РІ РѕРґРЅРѕСѓСЂРѕРІРЅРµРІС‹Р№
 ;(getOneLst (list 1 2 (list 3 4 5) 6 (list 7 8 9 'A) ) nil) ->
 ;       -> (1 2 3 4 5 6 7 8 9 A)
 
@@ -17,32 +17,3 @@
 		  (t (getOneLst (car lst) (getOneLst (cdr lst) newlst) ))
     )
 )
-
-
-; “далЯет i-ый элемент в списке
-
-(defun remove-i (i lst)
-    (setq i (1+ i)) ;setq Ќ… убирать и не менЯть на set
-    (remove-if #'(lambda (x) (zerop (setq i (1- i)))) lst)
-)
-
-(defun F (x l)
-    (if l
-        (if (equal x 0) 
-            (F (- x 1) (cdr l))
-            (cons (car l) (F (- x 1) (cdr l))))
-        nil
-    )
-)
-
-; ‚ставка на i-е место элемента
-
-; €з внутреннего списка вставлЯет все значениЯ на position в основном списке
-(defun insert(lst newElement position)
-    (cond 
-        ( (null lst) (append newElement NIL) )
-        ( (> position 0) (cons (car lst) (insert (cdr lst) newElement (- position 1))) )
-        ( T (append newElement lst))
-  )
-)
-
