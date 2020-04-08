@@ -20,4 +20,4 @@
 
 | :1234: | Описание | Поддержка | Отправленный файл| :information_source: |
 | --- | --- | --- | --- | --- |
-| :one: | Рубежный контроль №2 | [Код](https://github.com/timoninas/functional-programming/blob/master/lab_01/lab_01.lsp) | [Код]() | :negative_squared_cross_mark: |
+| :one: | Рубежный контроль №2 | [Код](https://github.com/timoninas/functional-programming/blob/master/rk2_lp/rk2_lp.lsp) | [Код]() | :negative_squared_cross_mark: |
