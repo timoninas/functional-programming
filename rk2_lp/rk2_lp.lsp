@@ -26,11 +26,11 @@
     (remove-if #'(lambda (x) (zerop (setq i (1- i)))) lst)
 )
 
-(defun F (x l)
-    (if l
-        (if (equal x 0) 
-            (F (- x 1) (cdr l))
-            (cons (car l) (F (- x 1) (cdr l))))
+(defun remove-i (i lst)
+    (if lst
+        (if (equal i 0) 
+            (remove-i (- i 1) (cdr lst))
+            (cons (car lst) (remove-i (- i 1) (cdr lst))))
         nil
     )
 )
@@ -46,3 +46,21 @@
   )
 )
 
+
+
+
+; Вставка элемента в конец списка
+
+; Вставить в конец списка список не сработает
+(defun append1 (lst number)
+    (cons 
+        (if (not (null lst))
+            (car lst)
+        )
+
+        (cond
+            ((< (length (cdr lst)) 1) (cons number nil))
+            (t (append1 (cdr lst) number))
+        )
+    )
+)
