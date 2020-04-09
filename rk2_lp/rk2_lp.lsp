@@ -64,3 +64,26 @@
         )
     )
 )
+
+
+
+; Проверка на равенство множеств
+
+(defun el-in-lst (el lst)
+    (cond 
+        ((null lst) nil)
+        ((eq el (car lst)) t)
+        (t (el-in-lst el (cdr lst)))))
+
+; проверяет находятся ли все элементы lst1 в lst2
+(defun lst-in-lst (lst1 lst2)
+    (cond 
+        ((null lst1) t)
+        ((el-in-lst (car lst1) lst2) (lst-in-lst (cdr lst1) lst2))
+        (t nil)))
+    
+(defun set-equal (lst1 lst2)
+    (cond
+        ((and (null lst1) (null lst2)) t)
+        ((or (null lst1) (null lst2)) nil)
+        (t (and (lst-in-lst lst1 lst2) (lst-in-lst lst2 lst1)))))
