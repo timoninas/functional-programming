@@ -119,3 +119,68 @@
 )
 
 (rk2 (list 1 2 (list 1 2 3 4 (list 1 2 3 4 5) 5) 1 2 3) 2 2 2)
+
+
+
+
+
+
+
+
+
+
+
+; ФУНКЦИОНАЛЫ
+
+(defun getBetweenAB (lst a b)
+    (mapcan #'(lambda (x)
+        (cond
+            ((and (numberp x) (evenp x)
+                (or
+                    (and (>= a x)(<= b x))
+                    (and (<= a x)(>= b x))
+                )
+             ) (cons x nil) )
+            ( (listp x) (getBetweenAB x a b) )
+        ) ) lst
+    )
+ )
+; getBetweenAB - функция, которая возвращаяет список элементы 
+; которого располагаются в границе от a до b
+
+
+(defun getSum (lst a b)
+       (reduce #'+ (getBetweenAB lst a b)))
+; getSum - функция, возвращающая сумму списка lst
+ 
+
+ (defun isNum (lst)
+    (mapcan #'(lambda (x)
+        (cond
+            ( (numberp x) (cons t nil) )
+            ( (listp x) (isNum x) )
+            ( (cons nil nil) )
+        )
+    )lst)
+)
+; isNum - функция возвращающая список из t и nil, t - число, nil - не число
+
+ (defun checkNumbers (lst)
+       (and lst (reduce #'(lambda (a b)
+            (or a b) ) (isNum lst)
+                )
+        )
+)
+; checkNumbers - функция проверяюшая наличие чисел в списке
+
+
+ (defun rk2 (lst a b)
+    (cond
+         ( (checkNumbers lst) (nconc lst (cons (getSum lst a b) nil)) )
+         ( (princ "No numbers in list") )
+    )
+)
+; rk2 - функция определяет есть ли в списке числа, 
+; если они есть, тогда ф-ция вычисляет сумму четных 
+; чисел в интервале от a до b и вставляет сумму в конец 
+; списка
