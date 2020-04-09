@@ -1,89 +1,121 @@
+; Дан смешанный, структурированный список 
+; (т.е. любой элемент списка может быть: символ, число или список)
 
-; Вставка k-го элемента
-(defun insert-k (lst value k)
-    (cond
-        ( (< k 1) (cons value lst))
-        ( t (cons (car lst) (insert-k (cdr lst) value (- k 1))) )
-    )
-)
 
-; Многоуровневый список в одноуровневый
-;(getOneLst (list 1 2 (list 3 4 5) 6 (list 7 8 9 'A) ) nil) ->
-;       -> (1 2 3 4 5 6 7 8 9 A)
-
-(defun getOneLst (lst newlst)
+(defun getOneLstHelper (lst newlst)
 	(cond ((null lst) newlst)
           ((atom lst) (cons lst newlst))
-		  (t (getOneLst (car lst) (getOneLst (cdr lst) newlst) ))
+		  (t (getOneLstHelper (car lst) (getOneLstHelper (cdr lst) newlst) ))
     )
 )
+; getOneLstHelper - функция делающая из смешанного 
+; структурированного списка обычный смешанный список
 
-
-; Удаляет i-ый элемент в списке
-
-(defun remove-i (i lst)
-    (setq i (1+ i)) ;setq НЕ убирать и не менять на set
-    (remove-if #'(lambda (x) (zerop (setq i (1- i)))) lst)
-)
-
-(defun remove-i (i lst)
-    (if lst
-        (if (equal i 0) 
-            (remove-i (- i 1) (cdr lst))
-            (cons (car lst) (remove-i (- i 1) (cdr lst))))
-        nil
+(defun getOneLst (lst)
+    (
+        getOneLstHelper lst nil
     )
 )
+; getOneLst - функция обертка
+; (getOneLst (list 1 2 3 (list 4 5 ) 6 (list 7 8 9 (list 10 11 12) ))
 
-; Вставка на i-е место элемента
+; Найти сумму четных чисел на всех уровнях заданного списка, 
+; лежащих в заданном интервале [a, b]
 
-; Из внутреннего списка вставляет все значения на position в основном списке
-(defun insert(lst newElement position)
-    (cond 
-        ( (null lst) (append newElement NIL) )
-        ( (> position 0) (cons (car lst) (insert (cdr lst) newElement (- position 1))) )
-        ( T (append newElement lst))
-  )
+
+
+(defun goToN(lst n)
+    (cond
+        ( (or (< n 0) (> n (length lst)) 
+                (null (car lst))) (list 0) )
+        ( (= n 0) lst )
+        ( t (goToN (cdr lst) (- n 1)))
+    )
+)
+; goToN - функция, сдвигающая список к позиции n
+
+(defun getSumHelper (lst sum)
+    (cond   
+        ( (null (car lst)) sum )
+        ( t (getSumHelper (cdr lst) 
+            (if (and (numberp (car lst)) (not (oddp (car lst))) )
+                (+ sum (car lst))
+                (+ sum 0)
+            )
+        ) )
+    )
+)
+; getSumHelper - функция помошник, считающая 
+; сумму четных элементов, являющихся числом
+
+(defun getSum(lst)
+    (getSumHelper lst 0)
 )
 
 
+; getSum - функция-обертка, запускающая сдвинутый список 
+; на позицию a, и передающая этот параметр в функцию помошник
+; с параметром sum, равным 0
 
+; Добавить найденную сумму к исходному списку, в качестве  
+; К-ого элемента верхнего уровня или в конец. Если чисел нет, сообщить об этом
 
-; Вставка элемента в конец списка
-
-; Вставить в конец списка список не сработает
-(defun append1 (lst number)
+(defun getListABhelper (lst b)
     (cons 
         (if (not (null lst))
             (car lst)
         )
 
         (cond
-            ((< (length (cdr lst)) 1) (cons number nil))
-            (t (append1 (cdr lst) number))
+            ( (< b 0) nil)
+            ((or (= b 0) (= (length (cdr lst)) 1)) (cons (cadr lst) nil))
+            (t (getListABhelper (cdr lst) (- b 1)))
         )
     )
 )
 
+(defun getListAB (lst a b)
+    (
+        getListABhelper (goToN lst a) (- b (+ a 1))
+    )
+)
 
+; (defun getListAB (lst a b)
+;     (
+;         if (> a b)
+;             nil
+;             (getListABhelper (goToN lst a) (- b (+ a 1)))
+;     )
+; )
 
-; Проверка на равенство множеств
+(defun insert_element_helper (lst k element new_lst)
+       (cond
+         (
+          (null lst)
+          new_lst
+          )
+          (
+           (= k 0)
+           (insert_element_helper (cdr lst) (- k 1) element (cons (car lst) (cons element new_lst)))
+           )
+          (
+           (insert_element_helper (cdr lst) (- k 1) element (cons (car lst) new_lst))
+           )
+          )
+       )
+ 
+Вспомогательная функция-обертка для вставки элемента на k-ую позицию:
+(defun insert_element (lst element k)
+       (reverse (insert_element_helper lst k element nil))
+)
 
-(defun el-in-lst (el lst)
-    (cond 
-        ((null lst) nil)
-        ((eq el (car lst)) t)
-        (t (el-in-lst el (cdr lst)))))
+; *Преобразовать исходный список в одноуровневый, сохранив порядок, 
+; но удалив числа (для max-х баллов)
 
-; проверяет находятся ли все элементы lst1 в lst2
-(defun lst-in-lst (lst1 lst2)
-    (cond 
-        ((null lst1) t)
-        ((el-in-lst (car lst1) lst2) (lst-in-lst (cdr lst1) lst2))
-        (t nil)))
-    
-(defun set-equal (lst1 lst2)
-    (cond
-        ((and (null lst1) (null lst2)) t)
-        ((or (null lst1) (null lst2)) nil)
-        (t (and (lst-in-lst lst1 lst2) (lst-in-lst lst2 lst1)))))
+(defun rk2 (lst a b k)
+    (
+       getOneLst (insert_element lst (getSum (getOneLst (getListAB lst a b))) k)
+    )
+)
+
+(rk2 (list 1 2 (list 1 2 3 4 (list 1 2 3 4 5) 5) 1 2 3) 2 2 2)
