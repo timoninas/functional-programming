@@ -20,4 +20,4 @@
 
 | :1234: | Описание | Поддержка | Отправленный файл| Отчет | Попытка |:information_source: |
 | --- | --- | --- | --- | --- | --- | --- |
-| :one: | Рубежный контроль №2| [Код](https://github.com/timoninas/functional-programming/blob/master/rk2_lp/helper.lsp) | [Код](https://github.com/timoninas/functional-programming/blob/master/rk2_lp/rk2_lp.lsp)| [Код](https://github.com/timoninas/functional-programming/blob/master/rk2_lp/rk2_lp.pdf) | :one: | :negative_squared_cross_mark: |
+| :one: | Рубежный контроль №2| [Код](https://github.com/timoninas/functional-programming/blob/master/rk2_lp/helper.lsp) | [Код](https://github.com/timoninas/functional-programming/blob/master/rk2_lp/rk2_lp.lsp)| [Отчет](https://github.com/timoninas/functional-programming/blob/master/rk2_lp/rk2_lp.pdf) | :one: | :negative_squared_cross_mark: |
